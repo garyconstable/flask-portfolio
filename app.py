@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mail import Mail, Message
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'  # Needed for flashing messages
@@ -11,7 +14,7 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'garyconstable80@gmail.com'  # Your Gmail address
-app.config['MAIL_PASSWORD'] = 'hyml oeqe vkai eovq'     # Your Gmail App Password
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 
 mail = Mail(app)
 
