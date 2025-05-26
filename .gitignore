@@ -1,0 +1,45 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Environment variables / secrets
+.env
+*.env
+
+# Flask instance folder
+instance/
+
+# OS files
+.DS_Store
+
+# VSCode settings (if using)
+.vscode/
+
+# Python virtualenv
+venv/
+env/
+
+# Pip
+pip-log.txt
+
+# Render build files
+*.log
+
+# Mac/Linux Trash
+.Trash-*
+
+# Pytest / test outputs
+htmlcov/
+.coverage
+.cache/
+
+# Backup files
+*.bak
+*.swp
+*~
+
+.idea
+
+static/assets/sass
