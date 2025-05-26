@@ -8,6 +8,18 @@
     <noscript>
         <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/noscript.css') }}">
     </noscript>
+
+    {% if request.host == "garyconstable.co.uk" or request.host == "www.garyconstable.co.uk" %}
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2059YTB8SE"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-2059YTB8SE');
+        </script>
+    {% endif %}
+
 </head>
 <body class="is-preload">
 
