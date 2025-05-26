@@ -14,17 +14,23 @@
             </p>
         </header>
         <section class="tiles">
+
             <article class="style1">
-									<span class="image">
-										<img src="{{ url_for('static', filename='images/pic01.jpg') }}" alt=""/>
-									</span>
-                <a href="generic">
-                    <h2>Magna</h2>
+                <span class="image">
+                    <img src="{{ url_for('static', filename='images/pic01.jpg') }}" alt=""/>
+                </span>
+                <a>
+                    <h2>Plain English Translator</h2>
                     <div class="content">
-                        <p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+                        <p>Coming soon - A simple AI-powered tool that rewrites technical or formal government text into clear, plain
+                            English.
+                            Designed to support accessibility, inclusion, and the GOV.UK standard for readable
+                            content.</p>
                     </div>
                 </a>
             </article>
+
+            {#
             <article class="style2">
                 <span class="image">
                     <img src="{{ url_for('static', filename='images/pic02.jpg') }}" alt=""/>
@@ -146,6 +152,7 @@
                     </div>
                 </a>
             </article>
+            #}
         </section>
     </div>
 </div>
