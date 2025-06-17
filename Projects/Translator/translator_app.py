@@ -1,12 +1,16 @@
-from flask import Flask, render_template, request
+# Projects/Translator/translator_app.py
+from flask import Blueprint, render_template, request
 import requests
 
-app = Flask(__name__)
+translator_bp = Blueprint(
+    'translator_app',
+    __name__,
+    url_prefix='/projects/translator-app',
+    template_folder='templates'
+)
 
-# Google Translate endpoint (unofficial, free, no key needed)
 TRANSLATE_URL = "https://translate.googleapis.com/translate_a/single"
 
-# Supported language codes for demo purposes
 LANGUAGES = {
     "en": "English",
     "es": "Spanish",
@@ -16,8 +20,8 @@ LANGUAGES = {
     "pt": "Portuguese"
 }
 
-@app.route('/', methods=['GET', 'POST'])
-def translate():
+@translator_bp.route('/', methods=['GET', 'POST'])
+def translator():
     translated_text = ""
     original_text = ""
     source_lang = "en"
@@ -44,12 +48,9 @@ def translate():
         except Exception as e:
             translated_text = f'[Error: {str(e)}]'
 
-    return render_template('index.html',
+    return render_template('translator.html',
                            translated_text=translated_text,
                            original_text=original_text,
                            source_lang=source_lang,
                            target_lang=target_lang,
                            languages=LANGUAGES)
-
-if __name__ == '__main__':
-    app.run(debug=True)
