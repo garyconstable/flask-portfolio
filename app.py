@@ -14,6 +14,10 @@ app.secret_key = 'your_secret_key_here'
 from Projects.Translator.translator_app import translator_bp
 app.register_blueprint(translator_bp)
 
+# 📦 Register Interview Assistant Blueprint
+from Projects.InterviewAssistant.interview_assistant_app import interview_assistant_bp
+app.register_blueprint(interview_assistant_bp)
+
 # 📧 Gmail SMTP Config
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
@@ -26,7 +30,7 @@ mail = Mail(app)
 # 🌍 Page Routes
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template('index.html', title='Home')
+    return render_template('index.html', title='Portfolio of Gary Constable – experienced web developer specialising in Python, AI apps, Magento, and tools for Civil Service job seekers. View projects, try free tools, and get in touch.')
 
 @app.route('/generic', methods=['GET', 'POST'])
 def generic():
@@ -39,6 +43,10 @@ def elements():
 @app.route('/translator', methods=['GET', 'POST'])
 def translator():
     return render_template('pages/translator.html', title='Free AI Translator | Instant Language Translation Tool – Gary Constable')
+
+@app.route('/interview-assistant', methods=['GET', 'POST'])
+def interviewAssistant():
+    return render_template('pages/interview-assistant.html', title='Free Civil Service Interview STAR Answer Generator – Gary Constable')
 
 # 📬 Contact Form Handler
 @app.route('/contact-form', methods=['POST'])

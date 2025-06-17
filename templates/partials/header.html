@@ -1,34 +1,33 @@
+<!-- Header -->
+<header id="header">
+    <div class="inner">
 
-
-    <!-- Header -->
-    <header id="header">
-        <div class="inner">
-
-            {% if request.path == '/' %}
-            <!-- Logo -->
-            <a href="/" class="logo">
+        {% if request.path == '/' %}
+        <!-- Logo -->
+        <a href="/" class="logo">
                 <span class="symbol"><img src="{{ url_for('static', filename='images/logo.svg') }}"
                                           alt="Logo"></span><span class="title">Welcome</span>
-            </a>
-            {% endif %}
+        </a>
+        {% endif %}
 
-            <!-- Nav -->
-            <nav>
-                <ul>
-                    <li><a href="#menu">Menu</a></li>
-                </ul>
-            </nav>
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
 
-        </div>
-    </header>
+    </div>
+</header>
 
-    <!-- Menu -->
-    <nav id="menu">
-        <h2>Menu</h2>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/translator">Translator</a></li>
-        </ul>
-    </nav>
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/translator">Translator</a></li>
+        <li><a href="/interview-assistant">Interview Assistant</a></li>
+    </ul>
+</nav>
 
 <!-- end header -->
