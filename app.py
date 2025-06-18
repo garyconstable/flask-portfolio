@@ -18,6 +18,10 @@ app.register_blueprint(translator_bp)
 from Projects.InterviewAssistant.interview_assistant_app import interview_assistant_bp
 app.register_blueprint(interview_assistant_bp)
 
+# 📦 Register Civil Service matcher Blueprint
+from Projects.CivilServiceMatcher.views import matcher_bp
+app.register_blueprint(matcher_bp, url_prefix='/projects/civil-service-matcher-app')
+
 # 📧 Gmail SMTP Config
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
@@ -47,6 +51,11 @@ def translator():
 @app.route('/interview-assistant', methods=['GET', 'POST'])
 def interviewAssistant():
     return render_template('pages/interview-assistant.html', title='Free Civil Service Interview STAR Answer Generator – Gary Constable')
+
+@app.route('/civil-service-job-matcher', methods=['GET', 'POST'])
+def interviewAssistantPage():
+    return render_template('pages/civil-service-matcher.html', title='AI-Powered Civil Service Job Matcher | Generate STAR Responses from Your CV')
+
 
 # 📬 Contact Form Handler
 @app.route('/contact-form', methods=['POST'])
