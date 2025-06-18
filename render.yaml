@@ -1,8 +1,5 @@
 services:
   - type: web
     name: flask-portfolio
-    env: python
-    buildCommand: chmod +x start.sh
-    startCommand: ./start.sh
+    env: docker
     plan: free
-    autoDeploy: true
