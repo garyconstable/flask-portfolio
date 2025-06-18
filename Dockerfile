@@ -7,8 +7,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Optional: install browsers at build time (redundant on Render)
+# Install Playwright + dependencies at build time
 RUN playwright install --with-deps
 
-# Important: install browsers at runtime
-CMD playwright install && gunicorn app:app --bind 0.0.0.0:10000
+# Set default start command
+CMD ["/bin/bash", "-c", "playwright install --with-deps && gunicorn app:app --bind 0.0.0.0:10000"]
