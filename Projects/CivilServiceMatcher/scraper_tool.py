@@ -7,7 +7,7 @@ def scrape_jobs(role="developer"):
     jobs = []
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # set to True when stable
+        browser = p.chromium.launch(headless=True)  # set to True when stable
         page = browser.new_page()
 
         try:
