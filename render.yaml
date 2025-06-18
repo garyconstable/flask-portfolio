@@ -2,10 +2,8 @@ services:
   - type: web
     name: flask-portfolio
     env: docker
-    plan: hobby
+    plan: starter
     autoDeploy: true
     envVars:
-      - key: PYTHONUNBUFFERED
-        value: "1"
       - key: PORT
         value: 10000
