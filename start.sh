@@ -1,7 +1,8 @@
 #!/bin/bash
+set -e
 
-echo "[STARTUP] Installing Playwright browsers in runtime..."
-playwright install --with-deps
+echo "▶ Installing Playwright browsers and dependencies..."
+npx playwright install --with-deps
 
-echo "[STARTUP] Launching Gunicorn..."
-exec gunicorn app:app
+echo "▶ Starting Gunicorn server..."
+exec gunicorn app:app --bind 0.0.0.0:$PORT
