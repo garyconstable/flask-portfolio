@@ -1,55 +1,29 @@
+# Use a lightweight Python image
 FROM python:3.11-slim
-
-# Install OS packages required by Playwright
-RUN apt-get update && apt-get install -y \
-    curl \
-    wget \
-    gnupg \
-    libglib2.0-0 \
-    libnss3 \
-    libgdk-pixbuf2.0-0 \
-    libgtk-3-0 \
-    libasound2 \
-    libxshmfence1 \
-    libx11-xcb1 \
-    libxcomposite1 \
-    libxdamage1 \
-    libxrandr2 \
-    libgbm1 \
-    libpango-1.0-0 \
-    libpangocairo-1.0-0 \
-    libatk1.0-0 \
-    libatk-bridge2.0-0 \
-    libcups2 \
-    libdrm2 \
-    libxss1 \
-    libxext6 \
-    libxfixes3 \
-    libxrender1 \
-    libx11-6 \
-    libxtst6 \
-    libappindicator1 \
-    libindicator7 \
-    libgl1 \
-    fonts-liberation \
-    libenchant-2-2 \
-    libsecret-1-0 \
-    libgles2 && \
-    rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /app
 
-# Copy project files
+# Install system dependencies for Playwright + Chromium
+RUN apt-get update && apt-get install -y \
+    wget gnupg ca-certificates curl unzip fonts-liberation libnss3 libatk-bridge2.0-0 libxss1 \
+    libgtk-3-0 libasound2 libxcomposite1 libxrandr2 libxdamage1 libx11-xcb1 libgbm1 libxshmfence1 \
+    libglu1-mesa libenchant-2-2 libsecret-1-0 libgstreamer1.0-0 libgstreamer-plugins-base1.0-0 \
+    libgraphene-1.0-0 libmanette-0.2-0 libgles2 libgstgl-1.0-0 libgstcodecparsers-1.0-0 \
+    --no-install-recommends && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install Playwright + Browsers
+# Install Playwright + download browsers at build time
 RUN pip install playwright && playwright install --with-deps
 
+# Copy app code
 COPY . .
 
-# Expose the correct port for Render
+# Expose port for Render
 EXPOSE 10000
 
+# Run app
 CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:10000"]
