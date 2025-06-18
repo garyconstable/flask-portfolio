@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "[BOOT] Installing Playwright browsers..."
+echo "[STARTUP] Installing Playwright browsers in runtime..."
 playwright install --with-deps
 
-echo "[BOOT] Starting Gunicorn..."
+echo "[STARTUP] Launching Gunicorn..."
 exec gunicorn app:app
