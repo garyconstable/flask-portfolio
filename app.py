@@ -56,9 +56,14 @@ def interviewAssistant():
 def interviewAssistantPage():
     return render_template('pages/civil-service-matcher.html', title='AI-Powered Civil Service Job Matcher | Generate STAR Responses from Your CV')
 
+@app.route("/hire-me")
+def hire_me():
+    return render_template("hire-me.html")
+
 @app.route('/downloads/civil-service-job-matcher.zip')
 def download_job_matcher():
     return redirect(url_for('static', filename='downloads/CivilServiceMatcher.zip'))
+
 
 # 📬 Contact Form Handler
 @app.route('/contact-form', methods=['POST'])
