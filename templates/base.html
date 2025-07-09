@@ -50,7 +50,7 @@
         <div class="inner">
             <section>
                 <h2>Get in touch</h2>
-                <form method="post" action="{{ url_for('contact_form') }}">
+                <form method="post" action="{{ url_for('contact_form') }}" id="contactForm">
                     <div class="fields">
                         <div class="field half">
                             <input type="text" name="name" id="name" placeholder="Name" required/>
@@ -66,6 +66,21 @@
                         <li><input type="submit" value="Send" class="primary"/></li>
                     </ul>
                 </form>
+
+                <script>
+                document.getElementById('contactForm').addEventListener('submit', function(e) {
+                    if (typeof gtag === 'function') {
+                        e.preventDefault(); // stop form submission
+                        gtag('event', 'contact_form_submission', {
+                            'event_category': 'Contact',
+                            'event_label': 'Contact Form Submitted'
+                        });
+                        // let GA fire before submitting the form
+                        setTimeout(() => this.submit(), 300);
+                    }
+                });
+                </script>
+
             </section>
             <section>
                 <h2>Follow</h2>
